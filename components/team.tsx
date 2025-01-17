@@ -8,7 +8,7 @@ const team = [
   {
     name: "Andrea Faith Alimorong",
     role: "Cloud Engineer",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "team/dev2.jpg?height=400&width=400",
     bio: "Specializing in cloud infrastructure and distributed systems",
     social: {
       github: "#",
@@ -19,7 +19,7 @@ const team = [
   {
     name: "Java Jay Bartolome",
     role: "Software Engineer",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "team/dev1.jpg?height=400&width=400",
     bio: "Full-stack developer with expertise in blockchain technology",
     social: {
       github: "#",
@@ -30,7 +30,7 @@ const team = [
   {
     name: "Jean Carlo San juan",
     role: "Software Engineer",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/team/dev3.jpg?height=400&width=400",
     bio: "Smart contract specialist and DeFi protocol developer",
     social: {
       github: "#",

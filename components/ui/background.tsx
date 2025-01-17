@@ -14,6 +14,7 @@ export function Background() {
 
     // Set canvas size
     const resizeCanvas = () => {
+      if (!canvas) return
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
     }
@@ -22,8 +23,8 @@ export function Background() {
 
     // Particle system
     const particles: Particle[] = []
-    const particleCount = 100 
-    const connectionDistance = 150 
+    const particleCount = 100
+    const connectionDistance = 150
 
     class Particle {
       x: number
@@ -35,9 +36,10 @@ export function Background() {
       glowSize: number
 
       constructor() {
+        if (!canvas) return
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
-        this.size = Math.random() * 3 + 1 
+        this.size = Math.random() * 3 + 1
         this.speedX = Math.random() * 0.3 - 0.15
         this.speedY = Math.random() * 0.3 - 0.15
         this.opacity = Math.random() * 0.5 + 0.2
@@ -45,6 +47,7 @@ export function Background() {
       }
 
       update() {
+        if (!canvas) return
         this.x += this.speedX
         this.y += this.speedY
 
@@ -85,6 +88,7 @@ export function Background() {
 
     // Draw connections between particles
     function drawConnections() {
+      if (!ctx || !canvas) return
       particles.forEach((p1, i) => {
         particles.slice(i + 1).forEach(p2 => {
           const dx = p1.x - p2.x
@@ -93,12 +97,12 @@ export function Background() {
 
           if (distance < connectionDistance) {
             const opacity = (1 - distance / connectionDistance) * 0.15
-            ctx!.beginPath()
-            ctx!.moveTo(p1.x, p1.y)
-            ctx!.lineTo(p2.x, p2.y)
-            ctx!.strokeStyle = `rgba(147, 197, 153, ${opacity})`
-            ctx!.lineWidth = 1
-            ctx!.stroke()
+            ctx.beginPath()
+            ctx.moveTo(p1.x, p1.y)
+            ctx.lineTo(p2.x, p2.y)
+            ctx.strokeStyle = `rgba(147, 197, 153, ${opacity})`
+            ctx.lineWidth = 1
+            ctx.stroke()
           }
         })
       })
@@ -106,7 +110,9 @@ export function Background() {
 
     // Animation loop
     const animate = () => {
-      ctx.fillStyle = 'rgba(10, 21, 10, 0.1)' 
+      if (!ctx || !canvas) return
+      
+      ctx.fillStyle = 'rgba(10, 21, 10, 0.1)'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
       
       // Create dark gradient background
