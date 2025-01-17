@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sprout } from 'lucide-react'
+import Partners from './partners'
 
 export default function Hero() {
   return (
@@ -33,7 +34,7 @@ export default function Hero() {
               Revolutionizing agricultural financing through blockchain technology and DeFi on the Internet Computer Protocol
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
               <Button size="lg" className="bg-green-500 hover:bg-green-600">
                 Launch App
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -42,10 +43,18 @@ export default function Hero() {
                 Learn More
               </Button>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="text-sm text-gray-400 mb-4">Powered by</div>
+              <Partners />
+            </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
   )
 }
-

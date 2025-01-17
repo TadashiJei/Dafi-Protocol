@@ -12,7 +12,6 @@ import CTA from '@/components/cta'
 import { PriceChart } from '@/components/charts/price-chart'
 import { FarmMetrics } from '@/components/charts/farm-metrics'
 import { AgriculturalStats } from '@/components/metrics/agricultural-stats'
-import Partners from '@/components/partners'
 
 export default function Home() {
   return (
@@ -36,7 +35,6 @@ export default function Home() {
         <Problem />
         <Team />
         <CTA />
-        <Partners />
       </div>
     </main>
   )
