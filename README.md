@@ -68,7 +68,22 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-DAFI Protocol is developed by a team of blockchain enthusiasts and agricultural finance experts committed to revolutionizing the agricultural finance sector through decentralized technology.
+DAFI Protocol is developed by a team of blockchain enthusiasts and agricultural finance experts:
+
+### Java Jay Bartolome
+- **Role**: Lead Developer
+- [GitHub](https://github.com/TadashiJei)
+- [LinkedIn](https://www.linkedin.com/in/java-jay-bartolome/)
+
+### Andrea Faith
+- **Role**: Frontend Developer
+- [GitHub](https://github.com/andreafaith)
+- [LinkedIn](https://www.linkedin.com/in/andreafaithalimorong/)
+
+### Jean Carlo
+- **Role**: Backend Developer
+- [GitHub](https://github.com/jeancarlo-schmitz)
+- [LinkedIn](https://www.linkedin.com/in/jean-carlo-san-juan-a52093244/)
 
 ## 📞 Contact
 

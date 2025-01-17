@@ -11,9 +11,9 @@ const team = [
     image: "team/dev2.jpg?height=400&width=400",
     bio: "Specializing in cloud infrastructure and distributed systems",
     social: {
-      github: "#",
-      linkedin: "#",
-      email: "mailto:andrea@dafi.com"
+      github: 'https://github.com/andreafaith',
+      linkedin: 'https://www.linkedin.com/in/andreafaithalimorong/',
+      twitter: 'https://x.com/wearedafiph'
     }
   },
   {
@@ -22,9 +22,9 @@ const team = [
     image: "team/dev1.jpg?height=400&width=400",
     bio: "Full-stack developer with expertise in blockchain technology",
     social: {
-      github: "#",
-      linkedin: "#",
-      email: "mailto:java@dafi.com"
+      github: 'https://github.com/TadashiJei',
+      linkedin: 'https://www.linkedin.com/in/java-jay-bartolome/',
+      twitter: 'https://x.com/wearedafiph'
     }
   },
   {
@@ -33,9 +33,9 @@ const team = [
     image: "/team/dev3.jpg?height=400&width=400",
     bio: "Smart contract specialist and DeFi protocol developer",
     social: {
-      github: "#",
-      linkedin: "#",
-      email: "mailto:jean@dafi.com"
+      github: 'https://github.com/jeancarlo-schmitz',
+      linkedin: 'https://www.linkedin.com/in/jean-carlo-san-juan-a52093244/',
+      twitter: 'https://x.com/wearedafiph',
     }
   }
 ]
@@ -85,7 +85,7 @@ export default function Team() {
                     <a href={member.social.linkedin} className="text-gray-400 hover:text-green-400 transition-colors">
                       <Linkedin className="h-5 w-5" />
                     </a>
-                    <a href={member.social.email} className="text-gray-400 hover:text-green-400 transition-colors">
+                    <a href={member.social.twitter} className="text-gray-400 hover:text-green-400 transition-colors">
                       <Mail className="h-5 w-5" />
                     </a>
                   </div>
