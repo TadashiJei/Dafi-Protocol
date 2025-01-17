@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description: 'Revolutionizing agricultural financing through blockchain technology and DeFi on the Internet Computer Protocol',
     images: [
       {
-        url: 'meta/Dafi-technical.png',
+        url: '/meta/Dafi-technical.png',
         width: 1200,
         height: 630,
         alt: 'DAFI Protocol Technical Overview'
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'DAFI - Decentralized Agricultural Finance Initiative',
     description: 'Revolutionizing agricultural financing through blockchain technology and DeFi on the Internet Computer Protocol',
-    images: ['/Dafi-technical.png']
+    images: ['/meta/Dafi-technical.png']
   },
   robots: {
     index: true,

@@ -2,6 +2,55 @@
 
 import { useEffect, useRef } from 'react'
 
+class Particle {
+  x: number
+  y: number
+  size: number
+  speedX: number
+  speedY: number
+  opacity: number
+  glowSize: number
+
+  constructor(canvas: HTMLCanvasElement) {
+    this.x = Math.random() * canvas.width
+    this.y = Math.random() * canvas.height
+    this.size = Math.random() * 3 + 1
+    this.speedX = Math.random() * 0.3 - 0.15
+    this.speedY = Math.random() * 0.3 - 0.15
+    this.opacity = Math.random() * 0.5 + 0.2
+    this.glowSize = this.size * 2
+  }
+
+  update(canvas: HTMLCanvasElement) {
+    this.x += this.speedX
+    this.y += this.speedY
+
+    if (this.x > canvas.width) this.x = 0
+    if (this.x < 0) this.x = canvas.width
+    if (this.y > canvas.height) this.y = 0
+    if (this.y < 0) this.y = canvas.height
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    ctx.beginPath()
+    const gradient = ctx.createRadialGradient(
+      this.x, this.y, 0,
+      this.x, this.y, this.glowSize
+    )
+    gradient.addColorStop(0, `rgba(147, 197, 153, ${this.opacity})`)
+    gradient.addColorStop(1, 'rgba(147, 197, 153, 0)')
+    
+    ctx.fillStyle = gradient
+    ctx.arc(this.x, this.y, this.glowSize, 0, Math.PI * 2)
+    ctx.fill()
+
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(147, 197, 153, ${this.opacity + 0.2})`
+    ctx.fill()
+  }
+}
+
 export function Background() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -26,64 +75,9 @@ export function Background() {
     const particleCount = 100
     const connectionDistance = 150
 
-    class Particle {
-      x: number
-      y: number
-      size: number
-      speedX: number
-      speedY: number
-      opacity: number
-      glowSize: number
-
-      constructor() {
-        if (!canvas) return
-        this.x = Math.random() * canvas.width
-        this.y = Math.random() * canvas.height
-        this.size = Math.random() * 3 + 1
-        this.speedX = Math.random() * 0.3 - 0.15
-        this.speedY = Math.random() * 0.3 - 0.15
-        this.opacity = Math.random() * 0.5 + 0.2
-        this.glowSize = this.size * 2
-      }
-
-      update() {
-        if (!canvas) return
-        this.x += this.speedX
-        this.y += this.speedY
-
-        if (this.x > canvas.width) this.x = 0
-        if (this.x < 0) this.x = canvas.width
-        if (this.y > canvas.height) this.y = 0
-        if (this.y < 0) this.y = canvas.height
-      }
-
-      draw() {
-        if (!ctx) return
-        
-        // Draw glow effect
-        const gradient = ctx.createRadialGradient(
-          this.x, this.y, 0,
-          this.x, this.y, this.glowSize
-        )
-        gradient.addColorStop(0, `rgba(147, 197, 153, ${this.opacity})`)
-        gradient.addColorStop(1, 'rgba(147, 197, 153, 0)')
-        
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.glowSize, 0, Math.PI * 2)
-        ctx.fillStyle = gradient
-        ctx.fill()
-
-        // Draw particle core
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(147, 197, 153, ${this.opacity + 0.2})`
-        ctx.fill()
-      }
-    }
-
     // Initialize particles
     for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle())
+      particles.push(new Particle(canvas))
     }
 
     // Draw connections between particles
@@ -149,8 +143,8 @@ export function Background() {
 
       // Update and draw particles
       particles.forEach(particle => {
-        particle.update()
-        particle.draw()
+        particle.update(canvas)
+        particle.draw(ctx)
       })
 
       // Draw connections
