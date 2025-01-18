@@ -2,12 +2,21 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Sprout, Menu, X } from 'lucide-react'
+import { useAuth } from "@/contexts/auth-context"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
+  const router = useRouter()
+  const { address } = useAuth()
+
+  const handleConnectWallet = () => {
+    router.push('/auth')
+    setIsOpen(false)
+  }
 
   return (
     <motion.header
@@ -67,14 +76,30 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
+            {address ? (
+              <Button 
+                variant="ghost" 
+                className="text-green-400 hover:text-green-500 hover:bg-green-400/10 relative overflow-hidden group"
+              >
+                <span className="relative z-10">
+                  {`${address.slice(0, 6)}...${address.slice(-4)}`}
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </Button>
+            ) : (
+              <Button 
+                variant="ghost" 
+                className="text-green-400 hover:text-green-500 hover:bg-green-400/10 relative overflow-hidden group"
+                onClick={handleConnectWallet}
+              >
+                <span className="relative z-10">Connect Wallet</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </Button>
+            )}
             <Button 
-              variant="ghost" 
-              className="text-green-400 hover:text-green-500 hover:bg-green-400/10 relative overflow-hidden group"
+              onClick={() => router.push('/dashboard')}
+              className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
             >
-              <span className="relative z-10">Connect Wallet</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-            </Button>
-            <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600">
               Launch App
             </Button>
           </div>
@@ -83,4 +108,3 @@ export default function Navbar() {
     </motion.header>
   )
 }
-
